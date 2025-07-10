@@ -77,7 +77,7 @@ python train_model.py  # Provided in backend (example script)
 
 1. **Clone the Repository**
 ```
-git clone https://github.com/your-username/phishsnitch.git
+git clone https://github.com/Nishant3108/PhishSnitch.git
 ```
 ```
 cd phishsnitch
@@ -91,8 +91,13 @@ cd phishsnitch-frontend
 npm install
 ```
 Create a .env file:
+For local
 ```
 VITE_BACKEND_URL=http://localhost:8000
+```
+For deployment
+```
+VITE_BACKEND_URL=https://phishsnitch-backend.onrender.com
 ```
 Then start the frontend:
 ```
