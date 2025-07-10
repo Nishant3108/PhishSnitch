@@ -5,12 +5,15 @@ PhishSnitch is a smart, AI-powered phishing detection tool built to help users i
 ---
 
 🌐 **Live Demo**  
-🔗``` https://phishsnitch.onrender.com/ ```
+🔗~ https://phishsnitch.onrender.com/ ~
+
 *Note: The backend may sleep after periods of inactivity. The first requests might take a few seconds.*
 
 ![phishsnitch](https://github.com/user-attachments/assets/9328fcbd-7b78-45b0-a1fd-6ad3e3cde05b)
 
-![safe](https://github.com/user-attachments/assets/d8928927-c7db-4b28-b6ef-0afe83bdda95)  ![possibly safe](https://github.com/user-attachments/assets/08fdc4cf-9433-4799-a79f-3ccc7678064b)  ![phishing](https://github.com/user-attachments/assets/e882fd5e-f64b-4ed8-a04c-2d592a924512)
+![safe](https://github.com/user-attachments/assets/d8928927-c7db-4b28-b6ef-0afe83bdda95)
+![possibly safe](https://github.com/user-attachments/assets/08fdc4cf-9433-4799-a79f-3ccc7678064b)
+![phishing](https://github.com/user-attachments/assets/e882fd5e-f64b-4ed8-a04c-2d592a924512)
 
 ---
 
