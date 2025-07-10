@@ -1,0 +1,446 @@
+/* ==== Color Variables ==== */
+
+/* Default: Dark theme variables */
+:root {
+  --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  --container-bg: #121212dd;
+  --text-color: #e0e0e0;
+  --title-color: #00bfff;
+  --title-shadow: #00bfffaa;
+  --desc-color: #b0b0b0;
+  --textarea-bg: #1c1c1c;
+  --textarea-border: #007acc;
+  --textarea-border-focus: #00bfff;
+  --button-bg: #00bfff;
+  --button-bg-hover: #0099cc;
+  --button-text: #121212;
+  --result-bg: #1f1f1fcc;
+  --result-text: #f0f0f0;
+  --phishing-color: #dc2626;
+  --possibly-safe-color: #facc15;
+  --not-phishing-color: #22c55e;
+  --confidence-bar-bg: #333333cc;
+  --confidence-fill-shadow: #00bfffcc;
+  --badge-hover-shadow: currentColor;
+  --badge-bg-opacity: 0.2;
+  --spinner-bg: #00bfff44;
+  --spinner-top: #00bfff;
+  --box-shadow: 0 10px 35px rgba(0, 170, 255, 0.35);
+  --backdrop-filter: saturate(180%) blur(15px);
+}
+
+/* Light theme overrides */
+.light-mode {
+  --bg-gradient: linear-gradient(135deg, #dbe9f4, #a4b6d0, #899cb7);
+  --container-bg: #f9f9f9cc;
+  --text-color: #121212;
+  --title-color: #0066cc;
+  --title-shadow: #0066ccaa;
+  --desc-color: #444444;
+  --textarea-bg: #ffffff;
+  --textarea-border: #3399ff;
+  --textarea-border-focus: #0066cc;
+  --button-bg: #3399ff;
+  --button-bg-hover: #005bb5;
+  --button-text: #ffffff;
+  --result-bg: #e8e8e8cc;
+  --result-text: #121212;
+  --phishing-color: #b22222;
+  --possibly-safe-color: #d9b500;
+  --not-phishing-color: #228b22;
+  --confidence-bar-bg: #cccccccc;
+  --confidence-fill-shadow: #3399ffcc;
+  --badge-hover-shadow: currentColor;
+  --badge-bg-opacity: 0.3;
+  --spinner-bg: #3399ff44;
+  --spinner-top: #3399ff;
+  --box-shadow: 0 10px 35px rgba(51, 153, 255, 0.35);
+  --backdrop-filter: saturate(180%) blur(15px);
+}
+
+/* ==== Base and Background ==== */
+html, body {
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-gradient);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+  display: block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==== Container ==== */
+.app-container {
+  margin: 2rem auto;
+  max-width: 650px;
+  padding: 2.5rem 3rem;
+  background-color: var(--container-bg);
+  border-radius: 16px;
+  width: 90%;
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  user-select: none;
+  backdrop-filter: var(--backdrop-filter);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==== Title ==== */
+.app-title {
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+  font-size: 2.75rem;
+  letter-spacing: 1.5px;
+  color: var(--title-color);
+  text-shadow: 0 0 10px var(--title-shadow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* ==== Description ==== */
+.app-desc {
+  font-weight: 400;
+  color: var(--desc-color);
+  font-size: 1.1rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* ==== Textarea ==== */
+.input-textarea {
+  width: 100%;
+  min-height: 130px;
+  margin-top: 1.2rem;
+  padding: 1rem 1.2rem;
+  font-size: 1.1rem;
+  border-radius: 14px;
+  border: 2px solid var(--textarea-border);
+  background-color: var(--textarea-bg);
+  color: var(--text-color);
+  resize: vertical;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.input-textarea:focus {
+  border-color: var(--textarea-border-focus);
+  box-shadow: 0 0 12px var(--textarea-border-focus);
+}
+
+/* ==== Button ==== */
+.analyze-button {
+  margin-top: 1.6rem;
+  padding: 0.85rem 3rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 16px;
+  border: none;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.15s ease, box-shadow 0.3s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px var(--button-bg + "88");
+}
+
+.analyze-button:hover:not(:disabled) {
+  background-color: var(--button-bg-hover);
+  transform: scale(1.07);
+  box-shadow: 0 6px 25px var(--button-bg-hover + "cc");
+}
+
+.analyze-button:disabled {
+  background-color: #444444;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ==== Result Card ==== */
+.result-card {
+  margin-top: 2.5rem;
+  padding: 2rem 2.5rem;
+  border-radius: 18px;
+  background-color: var(--result-bg);
+  box-shadow: 0 0 25px #000000bb;
+  text-align: center;
+  color: var(--result-text);
+  border: 4px solid transparent;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease, background-color 0.3s ease, color 0.3s ease;
+  user-select: text;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.result-card.phishing {
+  border-color: var(--phishing-color);
+  box-shadow: 0 0 25px var(--phishing-color + "bb");
+}
+
+.result-card.possibly-safe {
+  border-color: var(--possibly-safe-color);
+  box-shadow: 0 0 25px var(--possibly-safe-color + "bb");
+}
+
+.result-card.not-phishing {
+  border-color: var(--not-phishing-color);
+  box-shadow: 0 0 25px var(--not-phishing-color + "bb");
+}
+
+/* ==== Result Heading ==== */
+.result-card h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.25px;
+}
+
+/* ==== Confidence Text ==== */
+.confidence-text {
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+/* ==== Confidence Bar ==== */
+.confidence-bar {
+  width: 100%;
+  max-width: 420px;
+  height: 14px;
+  border-radius: 12px;
+  background-color: var(--confidence-bar-bg);
+  overflow: hidden;
+  margin: 0 auto 24px auto;
+  box-shadow: inset 0 0 8px #000000aa;
+  transition: background-color 0.3s ease;
+}
+
+.confidence-fill {
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 12px var(--confidence-fill-shadow);
+  transition: width 0.7s ease, box-shadow 0.3s ease;
+}
+
+/* ==== Explanation Text ==== */
+.explanation-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  user-select: text;
+  margin-bottom: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+/* ==== Details Section ==== */
+.details-section {
+  text-align: left;
+  font-size: 0.95rem;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.details-section h3 {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--title-color);
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+/* ==== Badges ==== */
+.badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 11px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 2px solid;
+  user-select: none;
+  cursor: default;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  background-color: var(--title-color + "33"); /* light transparent bg */
+}
+
+.badge:hover {
+  box-shadow: 0 0 8px var(--badge-hover-shadow);
+}
+
+/* ==== Inline Icon ==== */
+.icon-inline {
+  vertical-align: middle;
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+/* ==== Loading Dots ==== */
+.loading-dots::after {
+  content: ".";
+  animation: dots 1.4s steps(4, end) infinite;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--title-color);
+  transition: color 0.3s ease;
+}
+
+@keyframes dots {
+  0% {
+    content: "";
+  }
+  25% {
+    content: ".";
+  }
+  50% {
+    content: "..";
+  }
+  75% {
+    content: "...";
+  }
+  100% {
+    content: "";
+  }
+}
+
+/* ==== Responsive tweaks ==== */
+@media (max-width: 480px) {
+  .app-container {
+    padding: 1.5rem 1.8rem;
+  }
+  .result-card {
+    padding: 1.5rem 1.8rem;
+  }
+  .app-title {
+    font-size: 2rem;
+  }
+  .analyze-button {
+    width: 100%;
+  }
+}
+
+/* ==== Spinner ==== */
+.spinner {
+  border: 4px solid var(--spinner-bg);
+  border-top: 4px solid var(--spinner-top);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  transition: border-color 0.3s ease;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==== Theme toggle button ==== */
+.theme-toggle-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--title-color);
+  transition: color 0.3s ease;
+}
+
+.theme-toggle-button:hover {
+  opacity: 0.8;
+}
+
+/* Fade-in animation for result card */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-card {
+  animation: fadeIn 0.5s ease forwards;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Confidence bar transition already in inline styles; let's make sure it's smooth */
+.confidence-fill {
+  transition: width 0.7s ease, background-color 0.3s ease;
+}
+
+/* Hover effect on badges */
+.badge {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.badge:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+/* Hover effect on buttons */
+.analyze-button {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.analyze-button:hover:not(:disabled) {
+  background-color: #1e40af; /* Slightly darker blue */
+  box-shadow: 0 4px 8px rgba(30, 64, 175, 0.3);
+  cursor: pointer;
+}
+
+/* Disabled button cursor fix */
+.analyze-button:disabled {
+  cursor: not-allowed;
+}
+
+/* Clear input button hover */
+button[aria-label="Clear input"]:hover {
+  color: #0077cc;
+  cursor: pointer;
+}
+
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 3px solid #3b82f6; /* bright blue outline */
+  outline-offset: 2px;
+}
+
+.analyze-button:focus {
+  box-shadow: 0 0 0 3px #2563eb;
+}
+
+.analyze-button:active {
+  transform: scale(0.98);
+}
+
+.input-textarea {
+  resize: vertical;
+}
+
+.input-textarea::placeholder {
+  color: #9ca3af; /* Tailwind gray-400 */
+}
